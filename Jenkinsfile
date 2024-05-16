@@ -21,7 +21,7 @@ pipeline {
             steps{
                 echo 'Building Job'
                 sh 'cd Hissab-Kitaab-backend; mvn clean install -DSPRING_DATASOURCE_USERNAME=${MYSQL_CREDENTIALS_USR} -DSPRING_DATASOURCE_PASSWORD=${MYSQL_CREDENTIALS_PSW}';
-                sh 'mv -f Hisaab-Kitaab-backend/target/Hissab-Kitaab-0.0.1-SNAPSHOT.jar JarFiles/';
+                
             }
         }
         stage('Build Image for Microservices'){
