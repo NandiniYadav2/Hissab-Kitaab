@@ -8,6 +8,7 @@ pipeline {
     }
     tools {
         maven 'Maven3' // Name as configured in Global Tool Configuration
+        dockerTool 'Docker'
     }
     agent any
     stages {
