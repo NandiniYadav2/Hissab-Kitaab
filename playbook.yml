@@ -8,12 +8,12 @@
 
     - name: Copy Docker Compose file
       copy:
-        src: docker-compose.yml
-        dest: Hissab-Kitaab-backend/
+        src: Hissab-Kitaab-backend/docker-compose.yml
+        dest: ./
 
     - name: Run docker compose up command
       become: true
       docker_compose:
-        project_src: Hissab-Kitaab-backend/
+        project_src: ./
         state: present
         pull: yes
