@@ -2,6 +2,8 @@ pipeline {
     environment{
         DOCKERHUB_CREDENTIALS = credentials('DockerHubCred')
         MYSQL_CREDENTIALS = credentials('mysqlCred')
+        MYSQL_CREDENTIALS_USR = credentials('MYSQL_CREDENTIALS_USR')
+        MYSQL_CREDENTIALS_PSW = credentials('MYSQL_CREDENTIALS_PSW')
         DOCKERHUB_USER = 'aparajita104'
     }
     agent any
@@ -14,42 +16,36 @@ pipeline {
         stage('Maven Build Backend'){
             steps{
                 echo 'Building Job'
-                sh 'cd Hissab-Kitaab-backend; mvn clean install';
-                sh 'mv -f SplitwiseRegistryService/target/SplitwiseRegistryService-0.0.1-SNAPSHOT.jar JarFiles/';
+                sh 'cd Hissab-Kitaab-backend; mvn clean install -DSPRING_DATASOURCE_USERNAME=$MYSQL_CREDENTIALS_USR -DSPRING_DATASOURCE_PASSWORD=$MYSQL_CREDENTIALS_PSW';
+                sh 'mv -f Hisaab-Kitaab-backend/target/Hissab-Kitaab-0.0.1-SNAPSHOT.jar JarFiles/';
             }
         }
         stage('Build Image for Microservices'){
             steps{
                 echo 'Building docker Image'
-                sh "docker build -t $DOCKERHUB_USER/splitwise:eurekaregistry -f DockerFiles/RegistryDockerfile .";
-                sh "cd splitwisefrontend; docker build -t ${DOCKERHUB_USER}/splitwise:splitwisefrontend .";   
+                sh "cd Hissab-Kitaab-backend; docker build -t $DOCKERHUB_USER/hissab:backend .";
+                sh "cd hisaabKitabFrontEnd; docker build -t ${DOCKERHUB_USER}/hissab:frontend .";   
             }
         }
     
-        stage('Login into docker hub'){
-            steps{
-                echo 'Login into docker hub'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin';
-            }
-        }
         stage('Push Image to DockerHub'){
             steps{
-                echo 'Pushing Images into DockerHub'
-                sh 'docker push $DOCKERHUB_USER/splitwise:eurekaregistry';
-                sh 'docker push $DOCKERHUB_USER/splitwise:apigateway';
-                sh 'docker push $DOCKERHUB_USER/splitwise:userservice';
-    	        sh 'docker push $DOCKERHUB_USER/splitwise:expenseservice';
-    	        sh 'docker push $DOCKERHUB_USER/splitwise:splitwisefrontend';
+                script
+                {
+                    docker.withRegistry('', 'DockerHubCred')
+                    {
+                    echo 'Pushing Images into DockerHub'
+    	            sh 'docker push $DOCKERHUB_USER/hissab:backend';
+    	            sh 'docker push $DOCKERHUB_USER/hissab:frontend';
+                    }
+                }
             }
         }
         stage('Delete Image from localsystem'){
             steps{
                 echo 'Deleting Docker Image in docker'
-                sh 'docker rmi $DOCKERHUB_USER/splitwise:eurekaregistry';
-                sh 'docker rmi $DOCKERHUB_USER/splitwise:apigateway';
-                sh 'docker rmi $DOCKERHUB_USER/splitwise:userservice';
-                sh 'docker rmi $DOCKERHUB_USER/splitwise:expenseservice';
-                sh 'docker rmi $DOCKERHUB_USER/splitwise:splitwisefrontend';
+                sh 'docker rmi $DOCKERHUB_USER/hissab:backend';
+                sh 'docker rmi ${DOCKERHUB_USER}/hissab:frontend';
             }
         }
         stage('Run ansible playbook'){
