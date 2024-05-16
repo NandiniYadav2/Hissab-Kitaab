@@ -6,6 +6,9 @@ pipeline {
         MYSQL_CREDENTIALS_PSW = credentials('MYSQL_CREDENTIALS_PSW')
         DOCKERHUB_USER = 'aparajita104'
     }
+    tools {
+        maven 'Maven3' // Name as configured in Global Tool Configuration
+    }
     agent any
     stages {
         stage('Clone repository') {
@@ -13,9 +16,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/kumaparajita104/Hisaab-Kitaab-SPE'
             }
         }
-    tools {
-        maven 'Maven3' // Name as configured in Global Tool Configuration
-    }
+    
         stage('Maven Build Backend'){
             steps{
                 echo 'Building Job'
