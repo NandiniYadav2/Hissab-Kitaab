@@ -28,8 +28,8 @@ pipeline {
         stage('Build Image for Microservices'){
             steps{
                 echo 'Building docker Image'
-                sh "cd Hissab-Kitaab-backend; docker build -t ${DOCKERHUB_USER}/hissab:backend .";
-                sh "cd hisaabKitabFrontEnd; docker build -t ${DOCKERHUB_USER}/hissab:frontend .";   
+                sh 'cd Hissab-Kitaab-backend; docker build -t ${DOCKERHUB_USER}/hissab:backend .';
+                sh 'cd hisaabKitabFrontEnd; docker build -t ${DOCKERHUB_USER}/hissab:frontend .';   
             }
         }
     
