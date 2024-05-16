@@ -4,7 +4,7 @@ pipeline {
         MYSQL_CREDENTIALS = credentials('mysqlCred')
         MYSQL_CREDENTIALS_USR = credentials('MYSQL_CREDENTIALS_USR')
         MYSQL_CREDENTIALS_PSW = credentials('MYSQL_CREDENTIALS_PSW')
-        DOCKERHUB_USER = 'aparajita104'
+        DOCKERHUB_USER = 'nandiniyadav2'
     }
     tools {
         maven 'Maven3' // Name as configured in Global Tool Configuration
