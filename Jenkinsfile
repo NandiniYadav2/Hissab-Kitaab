@@ -13,6 +13,9 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/kumaparajita104/Hisaab-Kitaab-SPE'
             }
         }
+    tools {
+        maven 'Maven3' // Name as configured in Global Tool Configuration
+    }
         stage('Maven Build Backend'){
             steps{
                 echo 'Building Job'
