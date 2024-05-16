@@ -14,7 +14,7 @@ pipeline {
         stage('Maven Build Backend'){
             steps{
                 echo 'Building Job'
-                sh 'cd Hissab-Kitaab 4; mvn clean install';
+                sh 'cd Hissab-Kitaab-backend; mvn clean install';
                 sh 'mv -f SplitwiseRegistryService/target/SplitwiseRegistryService-0.0.1-SNAPSHOT.jar JarFiles/';
             }
         }
