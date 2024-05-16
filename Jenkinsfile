@@ -25,13 +25,22 @@ pipeline {
                 
             }
         }
-        stage('Build Image for Microservices'){
-            steps{
-                echo 'Building docker Image'
-                sh 'cd Hissab-Kitaab-backend; docker build -t ${DOCKERHUB_USER}/hissab:backend .';
-                sh 'cd hisaabKitabFrontEnd; docker build -t ${DOCKERHUB_USER}/hissab:frontend .';   
+        stage('Build Docker Images') {
+    steps {
+        script {
+            // Define base directory (optional)
+            def baseDir = "./"  // Adjust path if your Dockerfiles are elsewhere
+
+            // Build loop
+            for (microservice in ["Hissab-Kitaab-backend", "hisaabKitabFrontEnd"]) {
+                docker.build(
+                    "${DOCKERHUB_USER}/${microservice}:latest",  // Adjust tag if needed
+                    "${baseDir}${microservice}"
+                )
             }
         }
+    }
+}
     
         stage('Push Image to DockerHub'){
             steps{
