@@ -1,2 +1,2 @@
-ansible_host=localhost ansible_user=nandini ansible_ssh_pass=Nandini
+ansible_host=localhost ansible_python_interpreter=/usr/bin/python3 ansible_user=nandini ansible_ssh_pass=Nandini
 ansible_ssh_common_args = '-o StrictHostKeyChecking=no'
