@@ -9,11 +9,15 @@
     - name: Copy Docker Compose file
       copy:
         src: Hissab-Kitaab-backend/docker-compose.yml
-        dest: ./
+        dest: ./docker-compose.yml
+
+    - name: Pull latest docker image
+      command: docker-compose pull
+      args:
+        chdir: ./
 
     - name: Run docker compose up command
       command: docker-compose up -d
       args:
         chdir: ./
-        state: present
-        pull: yes
+
