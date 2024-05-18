@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script
                 {
-                    docker.withRegistry('', 'DockerHubCred')
+                    docker.withRegistry('', 'DockerHubCredHissab')
                     {
                     echo 'Pushing Images into DockerHub'
     	            sh 'docker push ${DOCKERHUB_USER}/hissab:backend';
