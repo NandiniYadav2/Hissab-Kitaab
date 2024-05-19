@@ -76,39 +76,36 @@ console.log(take);
 console.log(give);
 
 while (!take.empty() && !give.empty()) {
-    let p = take.top().amount;
-    let q = give.top().amount;
-    let a = take.top().userid;
-    let b = give.top().userid;
-    let pa = take.top().payee;
-    let pb = give.top().payee;
+    let p = take.top();
+    let q = give.top();
+   
 
-    console.log(a + " " + pa + " " + p);
-    console.log(b + " " + pb + " " + q);
+    console.log(p.userid + " " + p.payee + " " + p.amount);
+    console.log(q.userid + " " + q.payee + " " + q.amount);
 
-    const minT = Math.min(p, q);
-    p -= minT;
-    q -= minT;
+    const minT = Math.min(p.amount, q.amount);
+    p.amount -= minT;
+    q.amount -= minT;
 
-    if (p === 0) {
+    if (p.amount > 0) {
         take.pop();
+        take.push(p);
     } else {
-        take.pop();
-        take.push({p, a , pa});
+        take.pop();    
     }
 
-    if (q === 0) {
+    if (q > 0) {
         give.pop();
+        give.push(q);
     } else {
         give.pop();
-        give.push({q, b , pb});
     }
 
    
 
-    console.log(pb + " owes " + pa + " " + minT);
+    console.log(q.payee + " owes " + p.payee + " " + minT);
 
-    finalString.push(`${pb}  owes  ${pa}  : Rs.  ${minT}`);
+    finalString.push(`${q.payee}  owes  ${p.payee}  : Rs.  ${minT}`);
     console.log(finalString);
   }
 
