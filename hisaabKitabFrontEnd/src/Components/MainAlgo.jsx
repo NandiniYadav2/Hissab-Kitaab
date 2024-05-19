@@ -66,7 +66,7 @@ for(let t of transactions){
         console.log(t);
     }
     else{
-        const k =- t.amount;
+        const k = (- t.amount);
         t.amount = k;
         give.push(t);
     }
@@ -94,7 +94,7 @@ while (!take.empty() && !give.empty()) {
         take.pop();    
     }
 
-    if (q > 0) {
+    if (q.amount > 0) {
         give.pop();
         give.push(q);
     } else {
