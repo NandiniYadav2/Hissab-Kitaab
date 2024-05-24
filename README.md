@@ -13,15 +13,25 @@ Run project or press Shift + F10.
 We have implemented docker for backend https://github.com/kumaparajita104/Hisaab-Kitaab-SPE/blob/main/Hissab-Kitaab-backend/Dockerfile 
 
 # Implemented Ansible
-We have implemented docker for backend https://github.com/kumaparajita104/Hisaab-Kitaab-SPE/playbook.yml 
+We have implemented ansible for the automation of the project https://github.com/kumaparajita104/Hisaab-Kitaab-SPE/blob/main/playbook.yml
 
 
 URLs
-- GET: http://localhost:8888/students
-- GET (By ID): http://localhost:8888/students/id
-- GET (By Name): http://localhost:8888/students/findByName/name
-- POST: http://localhost:8888/students/
-- PUT: http://localhost:8888/students
-- DELETE: http://localhost:8888/students/id
+- POST: http://localhost:9091/api/auth/register
+- POST: http://localhost:9091/api/auth/signin
+- POST: http://localhost:9091/api/trips/createTrip
+- GET: http://localhost:9091/groups/{tripId}/createGroup
+- POST: http://localhost:9091/api/groups/{tripId}/ {groupId}
+- POST: http://localhost:9091/api/groups/{tripId}/ {groupId}/addUser/{userId}
+- GET: http://localhost:9091/api/expenses/ {groupID}/allExpenses
+- POST: http://localhost:9091/api/expenses/
+{groupID}/createExpense
+- GET: http://localhost:9091/api/users/user/{userName}
+- POST: http://localhost:9091/api/expenses/{tripId}/ {expenseId}/ addTransaction
+- GET: http://localhost:9091/api/expenses/
+{expenseId}/allTransactions
+-GET: http://localhost:9091/api/trips/allTrips
 
-The project is still under development...
+
+
+
