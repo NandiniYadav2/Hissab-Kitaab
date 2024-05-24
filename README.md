@@ -12,6 +12,9 @@ Run project or press Shift + F10.
 # Implemented Docker
 We have implemented docker for backend https://github.com/kumaparajita104/Hisaab-Kitaab-SPE/blob/main/Hissab-Kitaab-backend/Dockerfile 
 
+# Implemented Ansible
+We have implemented docker for backend https://github.com/kumaparajita104/Hisaab-Kitaab-SPE/playbook.yml 
+
 
 URLs
 - GET: http://localhost:8888/students
