@@ -4,17 +4,14 @@ The project use Spring Boot framework and other technologies.
 This project is a splitwise application for splitting fartes between friends,family members and colleagues.
 
 # Download the project
-Execute: git clone https://github.com/leonardogt4/CRUD-Student-Spring-Boot-REST
-
-# Create database in MySQL
-Run script in path and file: "../devdojo-springboot/src/main/resources/script_create_database.sql".
+Execute: git clone https://github.com/kumaparajita104/Hisaab-Kitaab-SPE.git
 
 # Run Project in InteliJJ Idea
 Run project or press Shift + F10.
 
-# Test Rest Api
-Import the file "../devdojo-springboot/src/main/java/br/com/devdojo/awesome/testApi/StudentApi.json" to REST API plugin of the Chrome Browser.
-After execute with play button the tests.
+# Implemented Docker
+We have implemented docker for backend  
+
 
 URLs
 - GET: http://localhost:8888/students
