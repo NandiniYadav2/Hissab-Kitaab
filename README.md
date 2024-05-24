@@ -30,6 +30,7 @@ URLs
 - POST: http://localhost:9091/api/expenses/{tripId}/ {expenseId}/ addTransaction
 - GET: http://localhost:9091/api/expenses/
 {expenseId}/allTransactions
+
 -GET: http://localhost:9091/api/trips/allTrips
 
 
