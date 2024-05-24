@@ -24,14 +24,11 @@ URLs
 - POST: http://localhost:9091/api/groups/{tripId}/ {groupId}
 - POST: http://localhost:9091/api/groups/{tripId}/ {groupId}/addUser/{userId}
 - GET: http://localhost:9091/api/expenses/ {groupID}/allExpenses
-- POST: http://localhost:9091/api/expenses/
-{groupID}/createExpense
+- POST: http://localhost:9091/api/expenses/{groupID}/createExpense
 - GET: http://localhost:9091/api/users/user/{userName}
 - POST: http://localhost:9091/api/expenses/{tripId}/ {expenseId}/ addTransaction
-- GET: http://localhost:9091/api/expenses/
-{expenseId}/allTransactions
-
--GET: http://localhost:9091/api/trips/allTrips
+- GET: http://localhost:9091/api/expenses/{expenseId}/allTransactions
+- GET: http://localhost:9091/api/trips/allTrips
 
 
 
