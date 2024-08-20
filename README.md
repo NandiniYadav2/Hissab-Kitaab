@@ -6,7 +6,7 @@ React.js was chosen for its component-based architecture and efficient rendering
 Spring Boot provides a scalable backend with REST APIs for handling business logic. 
 MySQL stores user data and expenses with a relational schema that supports complex queries and relationships.
 
-#DevOps Implementation
+# DevOps Implementation
 Jenkins automates our build and deployment process through a pipeline that includes stages for building, testing, and deploying Docker images. 
 Docker containers ensure consistency across environments, while Docker Compose manages multi-container setups. Ansible handles configuration and deployment tasks, ensuring that our application is consistently and correctly deployed.
 
